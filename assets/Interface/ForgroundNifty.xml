@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    <!-- +++++++++++++++++++++++++++++++++++++++ -->
+    <!-- start screen -->
+    <!-- +++++++++++++++++++++++++++++++++++++++ -->
+    <useStyles filename="nifty-default-styles.xml" />
+    <useControls filename="nifty-default-controls.xml" />
+    <screen id="start" controller="levelManagement.levelCreation.ForgroundScreenController">
+        <layer id="layer-2" backgroundColor="#5500" childLayout="absolute">
+            <!--controller="levelManagement.levelCreation.ForgroundScreenController"-->
+            <!--
+            <control id="window" name="window" title="Please Drag Me Too!" width="80%" height="80%"/>
+            -->
+            <!--
+            <panel id="panel" backgroundColor="#ff0f" width="80%" height="80%" childLayout="vertical">
+                <control id="window" name="window" title="Please Drag Me Too!" width="80%" height="80%"/>
+            </panel>
+            -->
+            
+            <control id="interact" name="button" label="interact" x="500px">
+                <interact onClick="interact()"/>
+            </control>
+           
+            <control id="window" name="window" title="Please Drag Me Too!" width="500px" height="400px" x="400px" y="50px" hideOnClose="true">
+                <text text="I'm Another Window!" style="base-font" color="#eeef" valign="center" width="100%" />
+            </control>
+            
+        </layer>
+        
+    </screen>
+</nifty>

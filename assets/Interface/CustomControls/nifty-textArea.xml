@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty-controls xmlns="http://nifty-gui.lessvoid.com/nifty-gui">
+    <controlDefinition  name="textArea"
+                        controller="utils.nifty.textEditor.TextEditorControl"
+                       inputMapping="utils.nifty.textEditor.TextEditorMapping"
+                       passwordChar="$passwordChar" maxLength="$maxLength">
+        
+        
+        <panel style="#panel" focusable="true" childLayout="center">            
+            <interact onClick="onClick()" onClickMouseMove="onClickMouseMove()"/>
+            
+            <panel id="#field" style="#field" backgroundColor="#ffff" width="100%" height="100%" valign="top" childLayout="vertical">
+                
+            </panel>
+            <panel style="#cursor-panel" childLayout="absolute">
+                <image id="#cursor" style="#cursor"/>
+            </panel>            
+            
+        </panel>
+    </controlDefinition>
+</nifty-controls>
+<!--Styles/my-styles/textEditor/-->

@@ -1,0 +1,40 @@
+Welcome! Meet Karel! Karel needs your help to find the TERMINAL GATE. Your goal is to give him the right instructions (methods). The programming language in which you will program your robot(s) is Java. You can move the robot by giving him the following messages:
+
+move(): this method moves the robot one square forward without changing its direction.
+turnRight(): the robot turns 90 degrees to the right remaining in the same square.
+turnLeft(): the robot turns 90 degrees to the left remaining in the same square.
+finish(); call this method when you reach the TERMINAL GATE.
+
+Be careful!: your robot must not collide with a wall or generally with an obstacle. If that happens the TERMINAL GATE is being sealed and there is no way to be opened again. In this case you have to press the "restart" button and try again.
+
+There are more methods to discover as you proceed!
+
+When you want to send a message ( or else call a method) you have to follow this form: 
+<name-of-the-object>.method();
+for example: karel.move();
+
+You always have to specify the name of the robot (object) because you may have to program more than one robots.
+
+Make sure you enter your instructions AFTER the line:"karel.land(world);" which is the method that lands the robot into the world. If your robot isn't landed you can't control it! :)
+
+Be careful!: Java is a case sensitive programming language. Example:
+karel.turnRight(); CORRECT
+Karel.turnRight(); WRONG
+karel.turnright(); WRONG
+
+THE ROBOT CLASS
+Each independent robot with the abilities that we mentioned before comprises an instance of the basic model/family of robots, called Robot. In Object Oriented Programming (OOP) a general type of object like this is called class and determines the properties and the behaviour of each object that derives from it.
+
+CONSTRUCTION & INITIALIZATION OF AN OBJECT
+As we have already mentioned, a class can supply us with as many objects as we want, provided that we give the appropriate instruction for the construction and initialization of an object that belongs to a given class. The instruction for the construction of a robot that is a member of the Robot class has the following form:
+
+Robot <name> = new Robot(positionX, positionY, direction);
+
+Example: Robot karel = new Robot(1, 2, "DOWN");
+
+<name>: The name of the robot which usually is karel but it can be anything you want.
+positionX: the x coordinate of the robot
+positionY: the y coordinate of the robot
+direction: it can be either "UP", "DOWN", "LEFT" or "RIGHT". 
+
+TIP: use the "3D arrow position" tool if you want to discover the x,y position of a block. 

@@ -1,0 +1,69 @@
+NESTED IF STATEMENTS
+Besides the IF statements that we analysed there is also a group of more complicated IF statements, known as nested IF statements. These are IF statements that are part of the ELSE part of another IF statement.
+
+For example you may need to check if your robot is in front of an obstacle. If he is not, he can move one step forward safely but then he may need to check again. In this case your code will be like this:
+
+if(!karel.inFrontOfAnObstacle()){
+	karel.move();
+	
+	if(!karel.inFrontOfAnObstacle()){
+		karel.move();
+	}
+	else{
+		karel.turnleft();
+		karel.move();
+	}
+}
+else{
+	karel.turnRight();
+	karel.move();
+}
+
+DEFINITION OF NEW BOOLEAN METHODS
+Predicates return one of the 2 boolean values true or false. So, when we define a predicate we must somehow declare which one of the boolean values is returned. For this purpose we use the return statement that has the following form:
+
+	return boolean-expression;
+
+The definition of method that will return a boolean result will have the following form:
+
+public boolean <name-of-the-method>(){
+	<list-of-instructions>
+	return boolean-expression
+}
+
+Example 1:
+Lets say we want to create a method that returns true when there is NOT an obstacle in front of the robot. Here's how:
+
+public boolean frontIsClear(){
+	return !inFrontOfAnObstacle();
+}
+
+This method will return the opposite result of the method inFrontOfAnObstacle()
+
+Example 2:
+Here's a more complex example. Let's say we want to create a method that returns true when there's is an object in front of the robot that can be picked up. In other words that object can be a key OR a treasure. Since we already have the methods inFrontOfAKey() and inFrontOfATreaure() here's how we can combine those two:
+
+public boolean inFrontOfAnObject(){
+	return inFrontOfAKey() || inFrontOfATreaure();
+}
+
+THE LOGICAL OPERANDS AND & OR
+The symbol "||" means OR. So if the robot is in front of a key OR in front of a treasure the result of the method inFrontOfAnObject() will be also true.
+
+The symbol "&&" means AND. That means that two conditions have to be both true in order for the result to be also true. For example, in the previous method definition, if we had replaced the symbol "||" with the symbol "&&" then the result would be true only if an object was a key AND a treasure at the same time. Of course this is never true so that method would return always false.
+
+Be careful!:
+1.return statements are valid only in methods that return a boolean result.
+2. A return statement causes the termination of the predicate that is part of, even if other statements exist after the return statement. 
+
+Example 2 (second way):
+You can use an if statement to as a second way of the previous example:
+
+public boolean inFrontOfAnObject(){
+	if(inFrontOfAKey() || inFrontOfATreasure()){
+		return true;
+	}
+	else{
+		return false;
+	}
+}

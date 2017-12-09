@@ -1,0 +1,47 @@
+THE WHILE STATEMENT
+In this level you will find very convenient the use of the "while" statement.
+Lets suppose that a robot wants to keep moving forward until he meets an obstacle. Despite the simplicity of the problem it is impossible to write a program for solving it by using the known statements. The problem lies in the fact that we don't know from the beginning how many times the robot has to execute the move() statement until it reaches the obstacle. The structure that we need in this case is the "while" statement.
+
+THE FORM OF THE WHILE STATEMENT
+The while statement allows a robot to execute a block of statements (in repetition) for as long as a condition is true. The general form of the while statement is the following:
+
+while ( <condition> ){
+	<list-of-instructions>
+}
+where:	while = reserved word, which starts the statement.
+	<condition> = the conditions tested are the same with those of if statements.	
+Semantics:
+I. The robot tests the <condition> that returns a Boolean value.
+II. If the condition is true, then the robot executes the <list-of-instructions> and returns to step I.
+III. If the condition is false, then the execution of while is terminated and the robot continues with executing the statement after while.
+In other words, for as long as the condition is true the robot executes the body of the while statement.
+
+Example:
+In this example we create a new method which allows Karel to keep moving forward until he meets an obstacle:
+
+public void keepMoving(){
+	while(!inFrontOfAnObstacle()){
+		move();
+	}
+}
+
+THE FOR STATEMENT
+The for statement is used when we want a robot to execute a block of statements a predefined number of times. 
+
+for(INITIALIZATION; CONDITION; INCREMENT/DECREMENT){
+	<list-of-instructions>
+}
+
+EXAMPLE:
+for(int i = 0; i < 100; i++){
+	move();
+}
+
+EXPLANATION:
+the "i" is an integer variable (int) that is initialized with the zero value. This means that in the first repetition the value of the "i" variable equals with 0.
+
+i < 100: This is the condition under which the repetition is continued. The value of the i value is continuing to be incremented until is no longer smaller than 100.
+
+i++: the "++" is an operator that means that the "i" variable will be incremented by one in each repetition. The "i++" is the same as "i+1".
+
+So in this example the "move()" method will be executed 100 times.

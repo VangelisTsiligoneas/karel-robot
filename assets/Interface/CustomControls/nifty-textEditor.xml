@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty-controls xmlns="http://nifty-gui.lessvoid.com/nifty-gui">
+    <controlDefinition style="nifty-textEditor" name="textEditor"                       
+                       inputMapping="utils.nifty.textEditor.TextEditorMapping"
+                       text="$text" >
+        
+        <panel childLayout="overlay">
+        <control id="#scroll" name="scrollPanel" style="my-scrollpanel">.
+            <panel id="#scrollStaff" x="0px" y="0px" childLayout="vertical" height="3000" width="1000">
+                
+              <control id="#textArea" name="textArea" style="nifty-textEditor" height="100%" width="100%"/>
+               
+            </panel>
+        </control>
+        </panel>
+        <!--
+            
+            
+        </control>
+        -->
+    </controlDefinition>
+</nifty-controls>
+
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty-controls xmlns="http://nifty-gui.lessvoid.com/nifty-gui">
+    <controlDefinition style="nifty-textEditor" name="textEditor"
+                       controller="utils.nifty.textEditor.TextEditorControl"
+                       inputMapping="de.lessvoid.nifty.controls.textfield.TextFieldInputMapping"
+                       text="$text" >
+        
+        
+        <control id="#scroll" name="scrollPanel" style="my-scrollpanel">
+            <panel id="#scrollStaff" x="0px" y="0px" childLayout="vertical" height="100%" width="100%">
+                
+                      
+        <panel style="nifty-textEditor#panel" focusable="true">            
+            <interact onClick="onClick()" onClickMouseMove="onClickMouseMove()"/>
+            
+            <panel id="#field" style="nifty-textEditor#field" backgroundColor="#0f0f" width="100%" height="100%" valign="top" childLayout="vertical">
+                
+            </panel>
+            <panel style="nifty-textEditor#cursor-panel">
+                <image id="#cursor" style="nifty-textEditor#cursor"/>
+            </panel>
+            
+            
+        </panel>
+               
+            </panel>
+            
+        </control>
+    </controlDefinition>
+</nifty-controls>
+-->

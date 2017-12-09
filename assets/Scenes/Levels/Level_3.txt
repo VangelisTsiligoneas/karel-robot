@@ -1,0 +1,2 @@
+        Robot karel = new Robot(2, 2, "DOWN");
+        karel.land(world);

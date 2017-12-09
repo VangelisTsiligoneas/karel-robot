@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+    <!-- +++++++++++++++++++++++++++++++++++++++ -->
+    <!-- start screen -->
+    <!-- +++++++++++++++++++++++++++++++++++++++ -->
+    <useStyles filename="nifty-default-styles.xml" />
+    <useControls filename="nifty-default-controls.xml" />
+    
+    <useStyles filename="Interface/Styles/my-styles/nifty-my-styles.xml" />
+    <useControls filename="Interface/CustomControls/nifty-customControls.xml" />
+    <style id="my-scrollpanel#scrollpanel">
+        <attributes backgroundColor="#ffff"></attributes>
+        <effect overlay="true">
+            <!-- this is the part that causes the problem :/ -->
+            <!--        <onActive name="blendMode" blendMode="multiply" post="true" />  -->
+            <onActive name="imageOverlay" filename="blackborder.png" imageMode="resize:1,30,1,1,1,30,1,1,1,30,1,1" post="true"></onActive>
+        </effect>
+    </style>
+    <style id="my-scrollpanel#bottom-right">
+        <attributes width="23px" height="23px"></attributes>
+    </style>
+
+    <!--levelManagement.LevelCreator-->
+    <screen id="start" controller="levelManagement.LevelCreator">
+        <layer id="layer" childLayout="center" >
+            <panel id="topMenu" height="8%" width="100%" align="center" valign="top" backgroundColor="#606060FF" childLayout="absolute-inside" visibleToMouse="true">
+                <!--
+         <control id="restart" name="button" backgroundImage="Interface/Styles/my-styles/button/restart_button.png" style="nifty-play-button"  width="40px" height="40px" x="0" valign="center">
+             <interact onClick="restart()"/>
+         </control>
+                -->         
+                <panel id="topCenterMenu" height="100%" childLayout="horizontal" x="50%" valign="center">
+                  
+                    <text id="score" text="0" font="Interface/Fonts/cleanText24.fnt" color="#800000ff" valign="center"/>
+                                   
+                </panel>
+                
+                <panel id="topRightMenu" height="100%" childLayout="horizontal" x="2000" valign="center">                
+                    <!--<text id="text" color="#000f" text="3D arrow position: " font="Interface/Fonts/ComicSansMS.fnt" x="50%" valign="center" marginRight="5px"/>-->
+                
+                    <control name="button" id="popupButton" backgroundImage="Interface/Styles/my-styles/button/help_icon.png" style="nifty-play-button" width="30px" height="30px" valign="center" marginRight="5px">
+                        <interact onClick="showWindow()"/>
+                    </control>
+                    <control name="button" id="MenuButton" backgroundImage="Interface/Styles/my-styles/button/goto_menu_button.png" style="nifty-play-button" width="37" height="40" align="right" valign="center" marginRight="5px">
+                        <interact onClick="goToMenu()"/>
+                    </control>
+                
+                </panel>
+            </panel>
+            <panel id="rightMenu" height="93%" width="35%" align="right" valign="bottom" backgroundColor="#E0E0E0FF" childLayout="vertical" visibleToMouse="true">
+                <panel id="rightMenuTop" height="20%" width="100%" childLayout="horizontal">
+                    <control id="myListBox" name="listBox" width="180px" vertical="optional" horizontal="optional" displayItems="${CALL.getdisplayCount()}" selection="Single" forceSelection="true"/>
+                    <text id="explanation" width="50%" height="100%" marginLeft="10px" padding="5px" backgroundColor="#ff04" text="by clicking on any selection, the name of the method is copied on the clipboard. Then, you can paste it (CTRL+V) inside your text editor" color="#000f" style="nifty-label" wrap="true" />                        
+                </panel>
+                <panel id="rightMenuEditor" height="80%" width="100%" childLayout="vertical">
+                    
+                    <!--create a tabs control-->
+                    <control id="restart_editors" name="button" backgroundImage="Interface/Styles/my-styles/button/refresh_button.png" style="nifty-play-button" width="20px" height="20px" align="right">
+                        <effect>
+                            <onHover name="hint" hintText="reset the editors" />
+                        </effect>
+                        <interact onClick="restartEditors()"/>
+                    </control>
+                       
+                
+                    <control id="edit_tabs" name="tabGroup" buttonWidth="50%" buttonHeight="50px" x="0" y="0">
+                        <control id="Execute class" name="tab" caption="Execute class">
+                            <control id="notepadOne" name="textEditor" width="100%" height="100%"/>
+                        </control>
+                        <control id="Extends Robot class" name="tab" caption="Robot class">
+                            <control id="notepadTwo" name="textEditor" width="100%" height="100%"/>
+                        </control>                        
+                    </control>
+                    <panel id="runPanel" width="40%" height="10%" childLayout="horizontal" align="center">
+                        <control id="run" name="button" label="COMPILE/RUN" height="40%"valign="center">
+                            <interact onClick="run()"/>
+                        </control>
+                        <control id="restart" name="button" backgroundImage="Interface/Styles/my-styles/button/restart_button.png" style="nifty-play-button" marginLeft="5px" width="40px" height="40px" x="0" valign="center">
+                            <effect>
+                                <onHover name="restartHint" hintText="restart button"/>
+                            </effect>
+                            <interact onClick="restart()"/>
+                        </control>
+                    </panel>
+                    
+                </panel>
+            </panel>
+            <panel id="BottomGame" height="28%" width="65%" align="left" valign="bottom" backgroundColor="#E0E0E0FF" childLayout="center" visibleToMouse="true">
+                <control id="messageBox" name="textEditor" width="100%" height="100%" visibleToMouse="false"/>
+            </panel>
+        </layer>
+        <layer id="navigation" backgroundColor="#1110" childLayout="absolute">
+            <panel id="navigator"  backgroundColor="#111f" width="120px" height="90px" x="${CALL.setNavigatorWidth()}" y="${CALL.setNavigatorHeight()}" childLayout="absolute">
+                <control id="up" name="button" label="+" x="0" y="0" width="30px" height="30px">
+                    <interact onClickRepeat="moveCamUp()" onRelease="onRelease()"/>
+                </control>
+                <control id="previous" name="button" label="&lt; -" x="30" y="0" width="30px" height="30px">
+                    <interact onClickRepeat="previousCamera()" onRelease="onRelease()"/>
+                </control>
+                <control id="forward" name="button" label="FRD" x="60" y="0" width="30px" height="30px">
+                    <interact onClickRepeat="moveCamForward()" onRelease="onRelease()"/>
+                </control>
+                <control id="next" name="button" label="- &gt;" x="90" y="0" width="30px" height="30px">
+                    <interact onClickRepeat="nextCamera()" onRelease="onRelease()"/>
+                </control>
+                <control id="left" name="button" label="L" x="30" y="30" width="30px" height="30px">
+                    <interact onClickRepeat="moveCamLeft()" onRelease="onRelease()"/>
+                </control>
+                <control id="right" name="button" label="R" x="90" y="30" width="30px" height="30px">
+                    <interact onClickRepeat="moveCamRight()" onRelease="onRelease()"/>
+                </control>
+                <control id="down" name="button" label="-" x="0" y="60" width="30px" height="30px">
+                    <interact onClickRepeat="moveCamDown()" onRelease="onRelease()"/>
+                </control>
+                <control id="backward" name="button" label="BCKD" x="60" y="60" width="30px" height="30px">
+                    <interact onClickRepeat="moveCamBackward()" onRelease="onRelease()"/>
+                </control>                
+            </panel>
+            
+           
+            <panel id="arrow" backgroundColor="#ff00" width="105px" x="0" y="${CALL.setNavigatorHeight()}" height="50" childLayout="absolute" valign="center" marginRight="50px">
+                <control id="arrowCheckBox1" name="checkbox" x="0" y="0" width="25px"/>
+                <text id="x" text="x:" style="nifty-label" backgroundColor="#333f" x="25" y="0"  width="10px"></text>
+                <control id="decreaseX" name="button" label="&lt;-" x="35" y="0"  width="25px" height="25px">
+                    <interact onClick="decreaseX()"/>
+                </control>
+                <text id="xValue" text="" x="60" y="0" style="nifty-label" backgroundColor="#333f" width="30px" height="25px"></text>
+                <control id="increaseX" name="button" label="-&gt;" x="90" y="0" width="25px" height="25px" >
+                    <interact onClick="increaseX()"/>
+                </control>                        
+                        
+                <text id="y" text="y:" style="nifty-label" x="25"  y="25" backgroundColor="#333f" width="10px"></text>
+                <control id="decreaseY" name="button" label="&lt;-" x="35" y="25" width="25px" height="25px">
+                    <interact onClick="decreaseY()"/>
+                </control>
+                <text id="yValue" text="" style="nifty-label" x="60" y="25" backgroundColor="#333f" width="30px" height="25px"></text>
+                <control id="increaseY" name="button" label="-&gt;" x="90" y="25" width="25px" height="25px">
+                    <interact onClick="increaseY()"/>
+                </control>
+            </panel>         
+        </layer>
+        <layer id="layer-2" backgroundColor="#5500" childLayout="absolute">
+           
+            <control id="window" name="window" title="Please Drag Me Too!" width="80%" height="80%" x="150px" y="60px" hideOnClose="true" childLayout="vertical">
+                
+                <control id="scroller" name="scrollPanel" style="my-scrollPanel" backgroundColor="#fdfcf3ff" horizontal="false" width="100%" height="100%">
+                    
+                </control>
+                
+                <!--<text text="I'm Another Window!" style="base-font" color="#eeef"  valign="center" width="100%" />-->
+            </control>
+            
+        </layer>
+
+    </screen>
+</nifty>

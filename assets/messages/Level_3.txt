@@ -1,0 +1,60 @@
+DOORS
+You can use the pickUp method to pick up keys as well as treasures. Keys are used to unlock doors. If a key has the same color with the door that means that this key can unlock this door. To unlock a door use the unlock() method. If a door is unlocked use the openDoor() method to open it.
+
+MINEFIELD
+A "minefield" is a region of blocks there are walls whose positions change each time you hit the "compile/run" button. In every "minefield" there is always a path on which there are no walls. So when a "minefield" blocks your way there's always a path you can use to pass that "minefield". The problem is that this path is revealed to you at run time so you can't give specific instructions to your robot in advance. Your robot has a special sensor with which he can check whether there is an obstacle in front of him. To use this sensor you have to use the "if/else" statement.
+
+THE IF/ELSE STATEMENT
+The general form of an IF statement is the following:
+
+if ( <condition> ){
+	<list-of-instructions1>
+}
+else{
+	<list-of-instructions2>
+}
+
+where:	if = reserved word for beginning a statement under condition.
+{ } = symbols that enclose the <list-of-instructions>, which can comprise of one or more statements. Be careful, the right curly brace is not followed by ;. 
+<list-of-instructions> = known as the THEN part of the IF statement.
+
+Semantics:
+Ι. Evaluation of the condition (<condition>), which always returns a logical value (true or false).
+ΙΙ. If the condition is true, execute the <list-of-instructions1> and move on to the next (after if) statement of the program. 
+ΙΙΙ. If the condition is false, ignore the <list-of-instructions1> and execute the <list-of-instructions2>
+
+Example:
+if(karel.inFrontOfAnObstacle()){
+	karel.turnRight();
+	karel.move();
+}
+else{
+	karel.move();
+}
+
+In this example Karel checks if theres is an object in front of him. if there is, then he turns right and moves to that direction. if there is NOT then he can move forward.
+
+The inFrontOfAnObstacle() method can be used inside the if statement ONLY because it returns a boolean result (it's not void, like move() for example), which means that its result will be true or false.
+
+Be careful!: you can't call a void method inside an if statement because it returns no result!
+
+THE CONDITIONS THAT ROBOTS CAN TEST
+inFrontOfAnObstacle(): tests if there is an obstacle in front of the robot
+inFrontOfADoor(): tests if there is a door in front of the robot
+inFrontOfACube(): tests if there is a door in front of the robot that he can push
+insideAGate(): tests if there is inside the TERMINAL GATE so he can finish()
+inFrontOfAGate(): tests if he is in front of the TERMINAL GATE
+inFrontOfAKey(): tests if there is a key in front of him
+inFrontOfATreasure(): tests if there is a treasure in front of him
+
+THE "!" SYMBOL
+When the "!" symbol is used inside an if statement then it will return the opposite result
+
+Example (this example has the same result with the previous one):
+if(!karel.inFrontOfAnObstacle()){	
+	karel.move();
+}
+else{
+	karel.turnRight();
+	karel.move();
+}

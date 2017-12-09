@@ -1,0 +1,53 @@
+SOME NEW METHODS!
+Notice that the light on the TERMINAL GATE is red. That means that it doesn't have enough power and it is turned off. In order for the TERMINAL GATE to be turned on you have to push all the cubes on top of the red spots that lie on the floor. To do that, you have to call the push() method when you are in front of a cube. Note that when you are not in front of a cube, if you call the push() method, the robot will be crushed because there will be nothing to be pushed. In this case you have to press the "restart" button and try again.
+
+The yellow spheres are called "treasures" and give you extra points that increase your score. Call pickUp() when you are in front of a treasure to pick it up.
+
+EXTEND YOUR ROBOT'S ABILITIES
+In many cases you need to teach your robot new methods that are consisted of the old methods. The Java programming language gives us the possibility to create new classes of robots, which contain new methods, in other words classes that can provide us with robots with increased possibilities. To do that the following code is required:
+
+public class <class-name> extends <parent-class>{
+}
+
+which in our case is:
+
+public class MyRobot extends Robot{
+}
+
+In each subclass "MyRobot" a constructor is required which calls the super constructor of the super class "Robot":
+
+MyRobot(int x, int y, String direction){
+	super(x, y, direction);
+}
+
+The MyRobot class is defined with the parameters x, y and direction. To define a parameter its type is required:
+The "int" word means that the value of the variables (parameters) x and y are integer numbers.
+The "String" word means that the value of the variable (parameter) direction is a string of characters.
+The "super" keyword is the call of the constructor in the super class with the parameters that are defined in the "MyRobot" class.
+
+Fortunately that piece of code is already pasted in the "MyRobot class" tab. All you have to do is defining your own methods.
+
+DEFINITION OF A METHOD
+In this level is very convenient for you if you create a method (lets say moveFourSteps()) that when called it sends a message to your robot to move 4 steps instead of 1. The definition of a new method has the following form and it has to be pasted inside the MyRobot class declaration, between the curly brackets:
+
+public void <method-name>(){
+	<list-of-instructions>
+}
+
+which in our case is:
+
+public void moveFourSteps(){
+	move();
+	move();
+	move();
+	move();
+}
+
+public: public means that your method will be visible and it can be called by other classes (in our case the Execute class)
+
+void: void means that this method simply does something and does not return any result. (In next levels we will see methods that return results).
+
+USE YOUR NEW AUGMENTED ROBOT!
+After we have created the "MyRobot" class with the new potentials we have to give these new potentials to our robot Karel. To do this simply replace the word "Robot" with the word "MyRobot" where it is appeared in class Execute. Karel is no longer an instance of the class "Robot" but is now an instance of the class "MyRobot".
+
+Now you can call all the old methods including your new method "moveFourSteps()".

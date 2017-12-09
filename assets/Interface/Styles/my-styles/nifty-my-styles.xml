@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty-styles xmlns="http://nifty-gui.lessvoid.com/nifty-gui">
+   
+    <useStyles filename="Interface/Styles/my-styles/button/nifty-exit-button.xml"/>
+    <useStyles filename="Interface/Styles/my-styles/button/nifty-play-button.xml"/>
+    <useStyles filename="Interface/Styles/my-styles/textArea/nifty-textArea.xml"/>
+    <useStyles filename="Interface/Styles/my-styles/textEditor/nifty-textEditor.xml"/>
+    <useStyles filename="Interface/Styles/my-styles/scroll/nifty-scroll.xml"/>    
+</nifty-styles>
+

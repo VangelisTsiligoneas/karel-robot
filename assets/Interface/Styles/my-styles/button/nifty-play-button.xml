@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty-styles xmlns="http://nifty-gui.lessvoid.com/nifty-gui">
+    <style id="nifty-play-button#panel">
+        <attributes backgroundImage="Interface/Styles/my-styles/button/play_button.png" imageMode="normal"
+                    width="100px" height="100px" childLayout="center"
+                    visibleToMouse="true"/>
+        <effect>
+            <onHover name="colorBar" color="#c6c4c4f0" post="false"/>
+            <onFocus name="imageOverlay" filename="$backgroundImage"
+                     imageMode="normal" post="true"/>
+            <onEnabled name="renderQuad" startColor="#2228" endColor="#2220" post="true" length="150"/>
+            <onDisabled name="renderQuad" startColor="#2220" endColor="#2228" post="true" length="150"/>
+        </effect>
+    </style>
+    
+    <style id="nifty-play-button#text" base="button-font">
+        <attributes align="center" valign="center" textHAlign="center" textVAlign="center" visibleToMouse="false"/>
+        <effect>
+            <onEnabled name="textColorAnimated" startColor="#8886" endColor="#eeef" post="false" length="150"/>
+            <onDisabled name="textColorAnimated" startColor="#eeef" endColor="#8886" post="false" length="150"/>
+        </effect>
+    </style>
+</nifty-styles>

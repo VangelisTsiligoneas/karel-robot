@@ -1,0 +1,13 @@
+OVERRIDING
+When we create a new class we sometimes want to change a method that is inherited, that is we want to change the definition of the method so as to give it a new meaning. For example, we might be asked to create a class of robots that need to be asked to create a class of robots that need to move by 2 blocks each time and not by one block. In this case we can create a new class, with the Robot class as parent class, and supply it with a new definition of the inherited method move(), so that the robots of the new class move forward by 2 blocks when they receive the message move(). The new definition overrides the initial definition of the method inherited by the Robot class. The definition of the new move() method will be this:
+
+public void move(){
+	super.move();
+	super.move();
+}
+
+The word "super" means that we call the move() method of the parent class Robot.
+
+In this level you will have 2 robots on your command, Karel and Alex! Karel is an instance of the Robot class, but Alex is an instance of the MyRobot class which overrides the move() method. As you will see, when you call the move() method for Karel, he moves one block forward as always but Alex moves 2 blocks instead of one. Try to solve this level by leaving the definition of the move() method in the MyRobot class as is.
+
+Good luck!

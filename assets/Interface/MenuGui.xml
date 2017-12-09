@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nifty xmlns="http://nifty-gui.sourceforge.net/nifty-1.3.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://nifty-gui.sourceforge.net/nifty-1.3.xsd http://nifty-gui.sourceforge.net/nifty-1.3.xsd">
+  <!-- +++++++++++++++++++++++++++++++++++++++ -->
+  <!-- start screen -->
+  <!-- +++++++++++++++++++++++++++++++++++++++ -->
+  <useStyles filename="nifty-default-styles.xml" />
+  <useControls filename="nifty-default-controls.xml" />
+  
+    <screen id="menu" controller="menu.MainMenu">
+      <layer id="background" childLayout="center">
+          <image filename="screenshots/Gui_background.png" width="100%" height="100%"></image>
+      </layer>
+      <layer id="foreground" backgroundColor="#f800" childLayout="horizontal" visibleToMouse="true">
+          
+          <panel id="left" height="100%" width="65%" align="left" backgroundColor="#f600" childLayout="vertical">
+              <panel id="top_left" height="20%" width="100%" align="center" backgroundColor="#fa00" childLayout="center">
+                  <control id="back" name="button" label="back" width="200px" height="46px">
+                      <interact onClick="back()"/>
+                  </control>
+              </panel>
+              <panel id="bottom_left" height="80%" width="100%" align="center" backgroundColor="#f800" childLayout="vertical">
+                  <panel id="bottom_left_1" height="25%" width="75%" align="center" backgroundColor="#0030" childLayout="center">
+                      <control id="ContinueButton" name="button" label="Continue" align="center" valign="center" width="200px" height="46px">
+                          <interact onClick="goToCurrentLevel()"/>
+                      </control>
+                  </panel>
+                  <panel id="bottom_left_2" height="25%" width="75%" align="center" backgroundColor="#f600" childLayout="center">
+                      <control name="button" label="Select Level" id="SelectLevelButton" align="center" valign="center" width="200px" height="46px">
+                          <interact onClick="goToSelectLevel()"/>
+                      </control>
+                  </panel>
+                  <panel id="bottom_left_3" height="25%" width="75%" align="center" backgroundColor="#f600" childLayout="center">
+                      <control name="button" label="View Scores" id="ViewScoresButton" align="center" valign="center" width="200px" height="46px">
+                          <interact onClick="goToViewScores()"/>
+                      </control>
+                  </panel>
+                  <panel id="bottom_left_4" height="25%" width="75%" align="center" backgroundColor="#f600" childLayout="center">
+                      <control name="button" label="Quit" id="QuitButton" align="center" valign="center" width="200px" height="46px">
+                          <interact onClick="quit()"/>
+                      </control>
+                  </panel>                  
+              </panel>
+          </panel>
+          <panel id="right" height="100%" width="35%" align="left" backgroundColor="#ff20" childLayout="vertical"></panel>
+      </layer>
+  </screen>
+  <!-- BUTTON STYLES-->
+  <style id="my-button#panel">
+        <attributes backgroundImage="Interface/Resources/exit_button.png" imageMode="normal"
+                    width="100px" height="100px" childLayout="center"
+                    visibleToMouse="true"/>
+        <effect>
+            <onHover name="colorBar" post="true"/>
+            <onFocus name="imageOverlay" filename="Interface/Resources/exit_button.png"
+                     imageMode="normal" post="true"/>
+            <onEnabled name="renderQuad" startColor="#2228" endColor="#2220" post="true" length="150"/>
+            <onDisabled name="renderQuad" startColor="#2220" endColor="#2228" post="true" length="150"/>
+        </effect>
+    </style>
+    
+    <style id="my-button#text" base="button-font">
+        <attributes align="center" valign="center" textHAlign="center" textVAlign="center" visibleToMouse="false"/>
+        <effect>
+            <onEnabled name="textColorAnimated" startColor="#8886" endColor="#eeef" post="false" length="150"/>
+            <onDisabled name="textColorAnimated" startColor="#eeef" endColor="#8886" post="false" length="150"/>
+        </effect>
+    </style>
+  <!-- END OF BUTTON STYLES-->
+  <useStyles filename="Interface/Styles/my-styles/nifty-my-styles.xml" />
+  <screen id="start" controller="menu.LoadGameScreen">
+      <layer id="backbackground" childLayout="vertical" visibleToMouse="true">
+          <image filename="screenshots/Gui_background.png" width="100%" height="100%"></image>
+      </layer>
+      <layer id="background" backgroundColor="#f800" childLayout="vertical" visibleToMouse="true">
+          
+          <text text="SELECT SAVED GAME" font="Interface/Fonts/ComicSansMSBold27.fnt" color="#30313aff" style="nifty-label" height="10%" padding="10px" textLineHeight="10%"/> 
+              <panel id="slot_1" height="20%" width="60%" align="center" valign="center" backgroundColor="#ff00" margin="5px" childLayout="horizontal">
+                  <interact onClick="selectSlot(1,primary)" onSecondaryClick="selectSlot(1,secondary)"/>             
+                  <effect>
+                      <onHover name="border" color="#e5d91bff" border="5px"/>                      
+                  </effect>
+                  
+                 <panel id="userInfo_1" height="100%" align="right" childLayout="vertical">
+                     
+                 </panel>
+            </panel>
+            <panel id="slot_2" height="20%" width="60%" align="center" valign="center" backgroundColor="#ff00" margin="5px" childLayout="horizontal">
+                <interact onClick="selectSlot(2,primary)" onSecondaryClick="selectSlot(2,secondary)"/>             
+                  <effect>
+                      <onHover name="border" color="#e5d91bff" border="5px"/>
+                  </effect>
+                  
+                 <panel id="userInfo_2" height="100%" align="right" childLayout="vertical">
+                     
+                 </panel>
+            </panel>
+            <panel id="slot_3" height="20%" width="60%" align="center" valign="center" backgroundColor="#ff00" margin="5px" childLayout="horizontal">  
+                <interact onClick="selectSlot(3,primary)" onSecondaryClick="selectSlot(3,secondary)"/>           
+                  <effect>
+                      <onHover name="border" color="#e5d91bff" border="5px"/>
+                  </effect>
+                  
+                 <panel id="userInfo_3" height="100%" align="right" childLayout="vertical">
+                     
+                     
+                 </panel>
+            </panel>
+            <panel id="slot_4" height="20%" width="60%" align="center" valign="center" backgroundColor="#ff00" margin="5px" childLayout="horizontal">
+                <interact onClick="selectSlot(4,primary)" onSecondaryClick="selectSlot(4,secondary)"/>             
+                  <effect>
+                      <onHover name="border" color="#e5d91bff" border="5px"/>
+                  </effect>
+                  
+                 <panel id="userInfo_4" height="100%" align="right" childLayout="vertical">
+                     
+                 </panel>
+            </panel>
+      </layer>
+      
+      <layer childLayout="center">
+          <panel id="info" width="18%" align="right" valign="center" backgroundColor="#ff08" childLayout="vertical">
+              <text id="info1" text="CLICK to login/create a user" font="Interface/Fonts/ComicSansMS.fnt" color="#000f" style="nifty-label" align="left" wrap="true" width="100%"/>
+              <text id="info2" text="RIGHT CLICK to delete a user" font="Interface/Fonts/ComicSansMS.fnt" color="#000f" style="nifty-label" align="left" wrap="true" width="100%"/>              
+          </panel>
+          
+          <control id="shutDown" name="button" style="nifty-exit-button" width="10%" align="right" valign="bottom" >
+              <interact onClick="exit()"/>
+          </control>
+      
+      </layer>
+     
+      
+  </screen>
+  <style id="my-scrollpanel#scrollpanel">
+  <attributes backgroundColor="#ffff"></attributes>
+  <effect overlay="true">
+    <!-- this is the part that causes the problem :/ -->
+    <!--        <onActive name="blendMode" blendMode="multiply" post="true" />  -->
+    <onActive name="imageOverlay" filename="blackborder.png" imageMode="resize:1,30,1,1,1,30,1,1,1,30,1,1" post="true"></onActive>
+  </effect>
+</style>
+
+<style id="my-scrollpanel#bottom-right">
+  <attributes width="23px" height="23px"></attributes>
+</style>
+  <screen id="scores" controller="menu.ScoreScreen">
+      <layer id="backgroundImage" childLayout="center">
+          <image filename="screenshots/Gui_background2.png" width="100%" height="100%"></image>
+      </layer>
+      <layer id="background" backgroundColor="#8820" childLayout="vertical" visibleToMouse="true">
+          <text id="header" text="SCORES:" font="Interface/Fonts/ComicSansMSBold27.fnt" color="#30313aff" style="nifty-label" height="10%" padding="10px" textLineHeight="10%"/>
+          <control id="scroll" align="center" name="scrollPanel" vertical="true" backgroundColor="#a8bcc899" height="80%" horizontal="false" width="90%" style="my-scrollpanel">
+             
+            <!-- <panel id="scores" height="1000px" width="100%" childLayout="vertical" x="0" y="0"/>-->
+          </control>          
+          <control id="button" name="button" label="back" align="center" width="150px" height="35px" margin="10px">
+              <interact onClick="goBack()"/>
+          </control>
+      </layer>
+  </screen>
+  
+  <useStyles filename="Interface/Styles/my-styles/nifty-my-styles.xml" />
+    <useControls filename="Interface/CustomControls/nifty-customControls.xml" />
+  <useStyles filename="Interface/Styles/my-styles/nifty-my-styles.xml" />
+  <screen id="levels" controller="menu.LevelScreen">
+      <layer id="backgroundImage" childLayout="center">
+          <image filename="screenshots/Gui_background2.png" width="100%" height="100%"></image>
+      </layer>
+      
+      <layer id="background" backgroundColor="#8820" childLayout="vertical" visibleToMouse="true">
+          <text id="header" text="SELECT A LEVEL:" font="Interface/Fonts/ComicSansMSBold27.fnt" color="#30313aff" style="nifty-label" height="10%" padding="10px" textLineHeight="10%"/>
+          <control id="scroll" align="center" name="scrollPanel" vertical="true" backgroundColor="#a8bcc899" height="80%" horizontal="false" width="90%" style="my-scrollpanel">
+             
+            <!-- <panel id="scores" height="1000px" width="100%" childLayout="vertical" x="0" y="0"/>-->
+          </control>          
+          <control id="backButton" name="button1" label="back" align="center" width="150px" height="35px" margin="10px">
+              <interact onClick="goBack()"/>
+          </control>
+          
+      </layer>
+  </screen>
+</nifty>
